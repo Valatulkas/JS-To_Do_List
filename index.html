@@ -14,13 +14,18 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <h2>To Do List</h2>
+          <h1>To Do List</h1>
           <div id='todo-list'>
           </div>
           <form id='create-task'>
             <input id='new-task-content' type="text" placeholder="new task" required/>
             <button>Create</button>
           </form>
+          <div class="toggle-section">
+            <button id="all" class="btn-category">All Tasks</button>
+            <button id="active" class="btn-category">Active</button>
+            <button id="completed" class="btn-category btn-large">Completed</button>
+          </div>
         </div>
       </div>
     </div>

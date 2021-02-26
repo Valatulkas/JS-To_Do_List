@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 
   var getAndDisplayAllTasks = function () {
@@ -9,8 +8,36 @@ $(document).ready(function() {
       success: function (response, textStatus) {
         $('#todo-list').empty();
         response.tasks.forEach(function (task) {
-          $('#todo-list').append('<div class="row"><p class="col-xs-8">' + task.content + '</p><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '>');
+          $('#todo-list').append('<div class="row"><p class="col-xs-8">' + task.content + '</p><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '><hr/>');
         })
+        var all = document.getElementById('all');
+        var active = document.getElementById('active');
+        var completed = document.getElementById('completed');
+
+        all.onclick = function () {
+          $('#todo-list').empty();
+          response.tasks.forEach(function (task) {
+            $('#todo-list').append('<div class="row"><p class="col-xs-8">' + task.content + '</p><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '><hr/>');
+          })
+        };
+
+        active.onclick = function () {
+          $('#todo-list').empty();
+          response.tasks.forEach(function (task) {
+            if (task.completed == false) {
+              $('#todo-list').append('<div class="row"><p class="col-xs-8">' + task.content + '</p><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '><hr/>');
+            }
+          })
+        };
+
+        completed.onclick = function () {
+          $('#todo-list').empty();
+          response.tasks.forEach(function (task) {
+            if (task.completed) {
+              $('#todo-list').append('<div class="row"><p class="col-xs-8">' + task.content + '</p><button class="delete" data-id="' + task.id + '">Delete</button><input type="checkbox" class="mark-complete" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '><hr/>');
+            }
+          })
+        };
       },
       error: function (request, textStatus, errorMessage) {
         console.log(errorMessage);

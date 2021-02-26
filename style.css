@@ -1,6 +1,25 @@
-h2  {
-  color: blue;
+h1  {
+  color: purple;
+  margin-bottom: 40px;
 }
 .delete {
   margin-right: 5px;
+}
+.toggle-section, .row, form {
+  margin-top: 20px;
+  text-align: center;
+}
+.toggle-section {
+  margin-top: 40px;
+}
+hr {
+  border: 2px solid purple;
+}
+.toggle-section > button {
+  border-radius: 15px;
+  font-size: 18px;
+}
+#active {
+  margin-left: 20px;
+  margin-right: 20px;
 }
